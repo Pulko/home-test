@@ -43,7 +43,11 @@ export const action: ActionFunction = async ({
 
   updateGuestbookEntry(newGuestbook, params.id);
 
-  return redirect("/guestbooks/" + params.id);
+  return redirect("/guestbooks/" + params.id, {
+    headers: {
+      "Cache-Control": "no-cache",
+    },
+  });
 };
 
 export const loader: LoaderFunction = async ({

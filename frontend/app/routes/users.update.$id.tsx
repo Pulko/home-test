@@ -37,7 +37,11 @@ export const action: ActionFunction = async ({
 
   updateUser(newUser, params.id);
 
-  return redirect("/users/" + params.id);
+  return redirect("/users/" + params.id, {
+    headers: {
+      "Cache-Control": "no-cache",
+    },
+  });
 };
 
 export const loader: LoaderFunction = async ({
