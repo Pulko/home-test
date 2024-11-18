@@ -5,7 +5,8 @@ import {
   UpdateUser,
 } from "./types";
 
-const API_URL = process.env.API_URL;
+const API_URL =
+  process.env.API_URL || "http://localhost:8000";
 
 export const fetchUsers = async () => {
   const response = await fetch(

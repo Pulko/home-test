@@ -3,15 +3,34 @@
 1. Clone the repository
 2. Run `docker compose up --build` to start the database container
 3. Run `cd frontend && npm install` to install the dependencies on the ./frontend
+
+.env:
+
+```
+API_URL=http://localhost:8000
+```
+
 4. Run `npm run dev` to start the frontend
 5. In a separate terminal, run `cd backend && cargo install diesel_cli --no-default-features --features postgres` to install the diesel CLI (make sure [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html) is installed as well)
+
+.env:
+
+```
+DATABASE_URL=postgres://postgres:password@localhost/postgres
+HOST=0.0.0.0
+PORT=8000
+RUST_LOG=all
+```
+
 6. Run `diesel migration run` to setup the database
 7. Run `cargo run` to start the backend
 
 # Design/Technical Decisions
 
 1. **Frontend** I used Remix to build the frontend part of the application in order to match the full-stack with what Prisma uses. Tailwind is used on the frontend to style the components by default. The majority of styles is taken from free tamples of Tailwind components.
+
 2. **Backend** I used Rust to build the API as this again is a part of the Prisma stack. This is based on my side-project that gave a nice boilerplate to start with: https://github.com/Pulko/apigen. Of course, I would love to use Prisma for Rust, but since the half of the solution was already implemented with help of my tool, I decided to use Diesel and bb8.
+
 3. **Database** I used Postgres as the database as this is what Prisma uses by default.
 
 # SSR
